@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='/member')
+    div.form-group
+      label(for='membership') Member Pass:
+      input#membership.form-control(type='text', placeholder='Pls enter member pass' name='membership' required='true') 
+      p membership pass = djurospiro
+    //- div.form-group
+    //-   label(for='pw') Password:
+    //-   input#uname.form-control(type='text', placeholder='Pls enter password' name='uname' value=(undefined===user ? '' : user.uname) required='true') 
+    button.btn.btn-primary(type='submit') Log In
+    
+  if mess
+    p(class="err")= mess
+
+  if errors 
+    ul
+      for error in errors
+        li(class="err")!= error.msg

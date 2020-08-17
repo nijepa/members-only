@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='/login')
+    div.form-group
+      label(for='uname') User name:
+      input#uname.form-control(type='email', placeholder='Pls enter e-mail' name='uname' value=(undefined===user ? '' : user.uname) required='true') 
+    div.form-group
+      label(for='pw') Password:
+      input#pw.form-control(type='password', placeholder='Pls enter password' name='pw' value=(undefined===user ? '' : user.pw) required='true') 
+    button.btn.btn-primary(type='submit') Log In
+
+  if mess
+    p(class="err")= mess
+    
+  if errors 
+    ul
+      for error in errors
+        li(class="err")!= error.msg

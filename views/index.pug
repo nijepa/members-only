@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  div(class='container')
+    header
+      h1 Welcome to #{title}
+
+    nav(class="navbar navbar-light" style="background-color: #e3f2fd;")
+
+      if user
+        p= user.uname
+        a(href='/logout' class="nav-link") Log Out
+
+        if user.membership === false
+          a(href='/member' class="btn btn-outline-secondary") Membership
+          
+        a(href='/message' class="btn btn-outline-info") Add Message
+      
+      else 
+        p(class="nav-link") Please sign-up or log-in to leave message and see who wrote what
+        a(class="nav-link" href='/signup') Sign Up
+        a(class="nav-link" href='/login') Log In
+
+    if message
+      - message.sort(function(a, b) {let textA = a.timestamp; let textB = b.timestamp; return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;});
+      each mess in message
+        div(class="messi")
+          if isMember
+            p(class="author") By #{mess.user.name} 
+          | @ #{mess.formated_date}
+          h3(class="for__title") #{mess.title} 
+          p(class="")= mess.text
+
+      else
+        li There are no messages.

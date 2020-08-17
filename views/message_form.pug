@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='' )
+    div.form-group
+      label(for='title') Title:
+      input#title.form-control(type='text', placeholder='Title' name='title' required='true' value=(undefined===message ? '' : message.title) )
+    div.form-group
+      label(for='text') Description:
+      textarea#text.form-control(type='textarea', placeholder='Description' name='text' rows='3' required='true') #{undefined===message ? '' : message.title}
+    div.form-group
+      label(for='timestamp') Date:
+      p= dat
+      input#timestamp.form-control(disabled type='text', placeholder='timestamp' name='timestamp' value=(undefined===dat ? '' : dat) required='true') 
+    div.form-group
+      label(for='user') User:
+      input#user.form-control(disabled type='text', placeholder='User' name='user' value=(undefined===user ? '' : user.uname) required='true') 
+      p= user.uname
+    button.btn.btn-primary(type='submit') Save
+
+  if errors 
+    ul
+      for error in errors
+        li(class="err")!= error.msg

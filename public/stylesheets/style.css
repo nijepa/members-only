@@ -1,0 +1,36 @@
+body, html {
+  padding: 20px;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  font-family: 'Patrick Hand', cursive !important;
+  font-size: 18px;
+/*   display: flex;
+  align-items: center;
+  background: #37474F;
+  font-family: monospace;
+  color: #cfd8dc;
+  justify-content: center; */
+  
+}
+
+a {
+  color: #00B7FF;
+}
+
+.err{
+  color: crimson;
+}
+
+.for__title {
+  border-bottom: 1px solid grey;
+}
+
+.author {
+  color: dodgerblue;
+}
+
+.messi {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}

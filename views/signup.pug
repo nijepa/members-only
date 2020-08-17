@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='first_name') First name:
+      input#first_name.form-control(type='text', placeholder='Pls enter first name' name='first_name' required='true' value=(undefined===user ? '' : user.first_name) )
+    div.form-group
+      label(for='last_name') Last name:
+      input#last_name.form-control(type='text', placeholder='Pls enter last name' name='last_name' required='true' value=(undefined===user ? '' : user.last_name) )
+    div.form-group
+      label(for='uname') User name:
+      input#uname.form-control(type='email', placeholder='Pls enter e-mail' name='uname' value=(undefined===user ? '' : user.uname) required='true') 
+    div.form-group
+      label(for='pw') Password:
+      input#pw.form-control(type='password', placeholder='Pls enter password' name='pw' value=(undefined===user ? '' : user.pw) required='true') 
+    div.form-group
+      label(for='rpw') Repeat password:
+      input#rpw.form-control(type='password', placeholder='Pls re-enter password' name='rpw' required='true')
+    button.btn.btn-primary(type='submit') Sign Up
+
+  if mess
+    p(class="err")= mess
+    
+  if errors 
+    ul
+      for error in errors
+        li(class="err")!= error.msg
